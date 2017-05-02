@@ -60,22 +60,22 @@ defmodule Distkv.DkvServer do
 
     def handle_call({:put, key, value}, _from, args) do
         {:ok, value} = :lbm_kv.put(Dkv, key, value)
-        {:reply, value, args}
+        {:reply, :ok, args}
     end
 
     def handle_call({:get, key}, _from, args) do
         {:ok, value} = :lbm_kv.get(Dkv, key)
-        {:reply, value, args}
+        {:reply, value[key], args}
     end
 
     def handle_call({:del, key}, _from, args) do
         {:ok, value} = :lbm_kv.del(Dkv, key)
-        {:reply, value, args}
+        {:reply, :ok, args}
     end
 
     def handle_call({:upd, key, value}, _from, args) do
         {:ok, value} = :lbm_kv.update(Dkv, key, value)
-        {:reply, value, args}
+        {:reply, value[key], args}
     end
 
     def handle_call(:all, _from, args) do
@@ -90,7 +90,7 @@ defmodule Distkv.DkvServer do
 
     defp _select_all([h|t], list) do
         {:ok, value} = :lbm_kv.get(Dkv, h)
-        nlist = list ++ value
+        nlist = list ++ [value[h]]
         _select_all(t, nlist)
     end
 

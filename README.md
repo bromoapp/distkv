@@ -51,10 +51,10 @@ Part of my code in **dkv_server.ex** came from this guy: [@mmmries](https://gith
 ```
 $ iex --name node_1@YOUR_IP --cookie freak -S mix run
 iex(node_1@YOUR_IP)1> alias Distkv.DkvServer
-iex(node_1@YOUR_IP)2> DkvServer.insert(:one, "Hello World")
-[]
+iex(node_1@YOUR_IP)2> DkvServer.insert(:one, %{msg: "Hello World"})
+:ok
 iex(node_1@YOUR_IP)3> DkvServer.select_all
-[one: "Hello World"]
+[%{msg: "Hello World"}]
 ```
 
 # Start 2nd node
@@ -63,7 +63,7 @@ $ set JOIN_TO=node_1@YOUR_IP
 $ iex --name node_2@YOUR_IP --cookie freak -S mix run
 iex(node_2@YOUR_IP)1> alias Distkv.DkvServer
 iex(node_2@YOUR_IP)2> DkvServer.select_all
-[one: "Hello World"]
+[%{msg: "Hello World"}]
 ```
 
 That's it guys... good luck with your project, I hope this would help you somehow :D

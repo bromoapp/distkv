@@ -1,19 +1,5 @@
 # Distkv
 
-**TODO: Add description**
+## Description
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `distkv` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [{:distkv, "~> 0.1.0"}]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/distkv](https://hexdocs.pm/distkv).
-
+I made this simple project, based on [this](https://github.com/mmmries/dkv) repo, that uses [this](https://github.com/lindenbaum/lbm_kv) project to provides distributed key-value in-memory db for elixir project.

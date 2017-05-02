@@ -43,4 +43,14 @@ How **Distkv.DkvServer (/lib/dkv_server.ex)** automatically initiates **NODE con
 
 ## How to test this app
 
-TO BE CONTINUE...
+#1. Start 1st node
+```
+$ iex --name node_1@YOUR_IP --cookie freak -S mix
+iex(node_1@YOUR_IP)1> alias Distkv.DkvServer
+iex(node_1@YOUR_IP)2> DkvServer.insert(:one, "Hello World")
+[]
+iex(node_1@YOUR_IP)3> DkvServer.select_all
+[one: "Hello World"]
+```
+
+

@@ -37,4 +37,8 @@ def start(_type, args) do
     opts = [strategy: :one_for_one, name: Distkv.Supervisor]
     Supervisor.start_link(children, opts)
   end
-  ``` 
+  ```
+
+How **Distkv.DkvServer (/lib/dkv_server.ex)** automatically initiates **NODE connections** then establish database replications with previously established Mnesia can be view in [dkv_server.ex](https://github.com/bromoapp/distkv/blob/master/lib/distkv/dkv_server.ex)
+
+## How to test this app

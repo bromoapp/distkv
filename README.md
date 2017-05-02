@@ -10,6 +10,7 @@ This approach doesn't really suit my requirement, as I want to be able to start 
 
 So by following a simple **TRICK** in [https://medium.com/@jmerriweather/elixir-phoenix-amnesia-multi-node-451e8565da1d](https://medium.com/@jmerriweather/elixir-phoenix-amnesia-multi-node-451e8565da1d), I code my **/config/config.exs** like below:
 
-'''use Mix.Config
-
-'''config :distkv, node_addr: System.get_env("JOIN_TO")
+```
+use Mix.Config
+config :distkv, node_addr: System.get_env("JOIN_TO")
+```

@@ -43,6 +43,7 @@ def start(_type, args) do
 How **Distkv.DkvServer (/lib/dkv_server.ex)** magically initiates **node connections** then starts Mnesia replications with previously established Mnesia can be view in [dkv_server.ex](https://github.com/bromoapp/distkv/blob/master/lib/distkv/dkv_server.ex)
 
 Part of my code in **dkv_server.ex** came from this guy: [@mmmries](https://github.com/mmmries) sample in [here](https://github.com/lindenbaum/lbm_kv/issues/1), thank him for that :)
+And thanks to [lindenbaum team](https://github.com/lindenbaum) as well, for their great project :)
 
 ## How to test this app
 

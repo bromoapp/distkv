@@ -49,7 +49,7 @@ Part of my code in **dkv_server.ex** came from this guy: [@mmmries](https://gith
 
 # Start 1st node
 ```
-$ iex --name node_1@YOUR_IP --cookie freak -S mix run
+C:\> iex --name node_1@YOUR_IP --cookie freak -S mix run
 iex(node_1@YOUR_IP)1> alias Distkv.DkvServer
 iex(node_1@YOUR_IP)2> DkvServer.insert(:one, %{msg: "Hello World"})
 :ok
@@ -59,8 +59,8 @@ iex(node_1@YOUR_IP)3> DkvServer.select_all
 
 # Start 2nd node
 ```
-$ set JOIN_TO=node_1@YOUR_IP
-$ iex --name node_2@YOUR_IP --cookie freak -S mix run
+C:\> set JOIN_TO=node_1@YOUR_IP
+C:\> iex --name node_2@YOUR_IP --cookie freak -S mix run
 iex(node_2@YOUR_IP)1> alias Distkv.DkvServer
 iex(node_2@YOUR_IP)2> DkvServer.select_all
 [%{msg: "Hello World"}]

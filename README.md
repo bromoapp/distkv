@@ -49,7 +49,7 @@ And thanks to [lindenbaum team](https://github.com/lindenbaum) as well, for thei
 
 **P.S. I'm using Windows OS here**
 
-# Start 1st node
+## Start 1st node
 ```
 C:\> iex --name node_1@YOUR_IP --cookie freak -S mix run
 iex(node_1@YOUR_IP)1> alias Distkv.DkvServer
@@ -59,7 +59,7 @@ iex(node_1@YOUR_IP)3> DkvServer.select_all
 [%{msg: "Hello World"}]
 ```
 
-# Start 2nd node
+## Start 2nd node
 ```
 C:\> set JOIN_TO=node_1@YOUR_IP
 C:\> iex --name node_2@YOUR_IP --cookie freak -S mix run
@@ -70,6 +70,6 @@ iex(node_2@YOUR_IP)2> DkvServer.select_all
 
 That's it guys... good luck with your project, I hope this would help you somehow :D
 
-# Note
+## Note
 My steps in learning elixir haven't reach to any real production right now, so I cannot be sure whether this approach is possible outside development phase. If any of you know, please post an issue here. Thanks :D
 

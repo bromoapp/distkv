@@ -8,13 +8,14 @@ defmodule Distkv.Application do
   require Logger
 
   def start(_type, args) do
+    # Read provided :node_addr from config.exs
     node_addr = Application.get_env(:distkv, :node_addr)
 
     import Supervisor.Spec, warn: false
 
     # Define workers and child supervisors to be supervised
     children = [
-      # Starts a worker by calling: Distkv.Worker.start_link(arg1, arg2, arg3)
+      # Starts DkvServer (GenServer) with node_addr as argument
       worker(Distkv.DkvServer, [node_addr]),
     ]
 

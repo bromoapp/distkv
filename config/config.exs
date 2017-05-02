@@ -2,6 +2,7 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
+# Takes JOIN_TO env variable provided by deployer (if any) on starting this app 
 config :distkv, node_addr: System.get_env("JOIN_TO")
 
 # This configuration is loaded before any dependency and is restricted

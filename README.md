@@ -43,9 +43,11 @@ How **Distkv.DkvServer (/lib/dkv_server.ex)** automatically initiates **NODE con
 
 ## How to test this app
 
-#1. Start 1st node
+**P.S. I'm using Windows OS here**
+
+# Start 1st node
 ```
-$ iex --name node_1@YOUR_IP --cookie freak -S mix
+$ iex --name node_1@YOUR_IP --cookie freak -S mix run
 iex(node_1@YOUR_IP)1> alias Distkv.DkvServer
 iex(node_1@YOUR_IP)2> DkvServer.insert(:one, "Hello World")
 []
@@ -53,4 +55,14 @@ iex(node_1@YOUR_IP)3> DkvServer.select_all
 [one: "Hello World"]
 ```
 
+# Start 2nd node
+```
+$ set JOIN_TO=node_1@YOUR_IP
+$ iex --name node_2@YOUR_IP --cookie freak -S mix run
+iex(node_2@YOUR_IP)1> alias Distkv.DkvServer
+iex(node_2@YOUR_IP)2> DkvServer.select_all
+[one: "Hello World"]
+```
+
+That's it guys... good luck with your project, I hope this would help you somehow :D
 

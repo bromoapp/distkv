@@ -74,7 +74,7 @@ defmodule Distkv.DkvServer do
     end
 
     def handle_call({:upd, key, value}, _from, args) do
-        {:ok, value} = :lbm_kv.update(Dkv, key, value)
+        {:ok, value} = :lbm_kv.put(Dkv, key, value)
         {:reply, value[key], args}
     end
 

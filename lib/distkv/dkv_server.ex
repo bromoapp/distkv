@@ -10,8 +10,22 @@ defmodule Distkv.DkvServer do
         GenServer.start_link(__MODULE__, node_addr, name: __MODULE__)
     end
 
+
+    def run [] do
+      IO.puts "################ could't connect to any node. I feel lonely."
+    end
+
     def run(addr) do
-        Node.connect String.to_atom(addr)
+        addr = addr |> Enum.filter(fn(e) -> e != node() end)
+        [first|rest] = addr
+
+        case Node.connect first do
+            false ->
+              IO.puts "################ connecting to #{first} failed ##############"
+              run rest
+            ok ->
+              IO.puts "################ connecting to #{first} succeeded: #{ok} ##############"
+        end
     end
 
     def init(node_addr) do
@@ -20,7 +34,7 @@ defmodule Distkv.DkvServer do
                 :ok = :lbm_kv.create(Dkv)
             _   ->
                 timeout = 60_000
-                worker = Task.async(__MODULE__, :run, [node_addr])
+                worker = Task.async(__MODULE__, :run, [Enum.map(node_addr, fn(e) -> String.to_atom(e) end)] )
                 Task.await(worker, timeout)
                 case Node.list do
                     [] ->

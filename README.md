@@ -15,6 +15,9 @@ So by following a simple **trick** from [https://medium.com/@jmerriweather/elixi
 use Mix.Config
 
 # Takes JOIN_TO env variable provided by deployer (if any) on starting this app 
+# JOIN_TO may be a comma separated list of nodes. The app will connect to the first
+# available foreign node. This way the list of nodes can be identical on all nodes
+# and starting order of apps on different nodes doesn't matter.
 config :distkv, node_addr: System.get_env("JOIN_TO")
 ```
 
@@ -51,6 +54,7 @@ And thanks to [lindenbaum team](https://github.com/lindenbaum) as well, for thei
 
 ## Start 1st node
 ```
+C:\> set JOIN_TO=node_1@YOUR_IP,node_2@YOUR_IP,node_3@YOUR_IP
 C:\> iex --name node_1@YOUR_IP --cookie freak -S mix run
 iex(node_1@YOUR_IP)1> alias Distkv.DkvServer
 iex(node_1@YOUR_IP)2> DkvServer.insert(:one, %{msg: "Hello World"})
@@ -61,7 +65,7 @@ iex(node_1@YOUR_IP)3> DkvServer.select_all
 
 ## Start 2nd node
 ```
-C:\> set JOIN_TO=node_1@YOUR_IP
+C:\> set JOIN_TO=node_1@YOUR_IP,node_2@YOUR_IP,node_3@YOUR_IP
 C:\> iex --name node_2@YOUR_IP --cookie freak -S mix run
 iex(node_2@YOUR_IP)1> alias Distkv.DkvServer
 iex(node_2@YOUR_IP)2> DkvServer.select_all

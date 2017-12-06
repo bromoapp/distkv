@@ -3,7 +3,7 @@
 use Mix.Config
 
 # Takes JOIN_TO env variable provided by deployer (if any) on starting this app 
-config :distkv, node_addr: System.get_env("JOIN_TO")
+config :distkv, node_addr: System.get_env("JOIN_TO") |> String.split(~r/[, ]+/)
 
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
